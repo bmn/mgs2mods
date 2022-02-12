@@ -1,0 +1,121 @@
+bmn's MGS2 mods
+===============
+
+Installation instructions:
+* Extract the zip to your MGS2 installation so that MGS2.asi is in the bin\scripts folder.
+* Copy MGS2.ini from the MGS2.ConfigFiles folder to the scripts folder (and read it in a text editor for more general information).
+* For any mod you want to use, either:
+  - Copy MGS2.NameOfMod.ini to the scripts folder , or...
+  - Copy the contents of that .ini to MGS2.ini if you want all your settings in a single file.
+  - Also edit that .ini if you want to configure the mod (removing any # signs commenting out lines).
+* Read the notes in each file - some can crash the game if used incorrectly!
+* Launch MGS2.
+
+To disable a mod (without having to delete/rename files),
+  set Enabled=No in that mod's config
+
+Where settings have been commented out with a # sign,
+  the value shown is the default value
+Uncomment the setting (by deleting the # sign) in order to change it
+
+Valid values you can use for boolean (true/false) options (case insensitive):
+  True, T, Yes, Y, On, 1
+  False, F, No, N, Off, 0
+
+TextColors are in the hex format RRGGBB
+For TextPosX, the far left is 0, far right is 640
+For TextPosY, the top is 0, bottom is 480
+For TextAlign, 0 is left align, 1 is right align, 2 is centred
+
+Input masks are a single number that represents a combination of buttons
+Create a combination by adding these hex codes together
+e.g. (Cross + Square) = (80 + 40) = C0
+0001 L1
+0002 R1
+0004 L2
+0008 R2
+0010 Triangle
+0020 Circle
+0040 Cross
+0080 Square
+0100 Select
+0200 L3
+0400 R3
+0800 Start
+1000 Up
+2000 Right
+4000 Down
+8000 Left
+
+
+
+Release history
+===============
+
+a4: 9 Feb 2022
+
+asi a4 new stuff:
+[Actions]      Set keyboard shortcuts to open an application of your choice. It tells MGS2 Trainer to disable its Soft Reset if it will clash with the ASI version. There may be other types of action in the future.
+[Affinity]     Set the processor affinity and priority on launch
+[DelayedLoad]  Add a set delay at the start of each new screen, e.g. to give more time to think between screens when practicing
+
+updated stuff:
+[Timer]        Ending start time (optional) added - displays the Game Time at the beginning of the ending. Expected time moved to top left by default.
+[SaveLocation] The keyboard shortcut to open the save location selection dialog can now be changed in config
+[Wet]          A new and exciting mode... Cold% :O
+
+--------------------------------------------------------------------------------
+
+a3: 13 Jan 2022
+
+A small update that (along with fixing a couple of small bugs), adds a much-requested TurboDisplay feature...
+
+...set the new `PlaySound` option in any TurboDisplay profile to the full path to a WAV file, and it'll play on activation.
+This feature works on disabling turbo in the `[TurboDisplay]` profile, and with your XInputPlus turbo in the `[TurboDisplay.Profile.1]` profile.
+
+--------------------------------------------------------------------------------
+
+a2: 2 Jan 2022
+
+ASI update :freerealestate:
+
+New stuff:
+* Performance - new mod to show the game FPS onscreen
+
+Updated stuff:
+* New Game Info
+  - new options to disable showing NG and NGOID
+  - bugfix for NG+/NG++ showing incorrect number of +s
+  - "quick equip"" renamed to "quick change"
+* Timer
+  - new options to show an (estimated) expected time during Plant credits (thx to dlimes and hau5test for help)
+  - new option `TextFormat` to add custom text to timers
+
+
+--------------------------------------------------------------------------------
+
+a1: 12 Dec 2021
+
+New PC thing :NickRPMeme: If you've seen people with weird colour turbo displays and wondered what they're using, here's your answer
+
+This is an ASI plugin (just a renamed DLL really) that you put in your bin\scripts folder. It has a load of mods you can enable and configure individually (through INI files), including all of my previous hard-patch mods.
+
+The full list:
+• Caution% - apply permanent Caution, or apply Evasion at the start of every area
+• Default Options - change the settings in the Options menu when launching the game
+• DirectInput controller background support - makes DInput controllers work when clicked away from the game
+• Drebin Mode patch from V's Fix - 9999 ammo for every weapon
+• First Person% - first person mode in every mode
+• New Game Info - the New Game part of the existing Overlay patch, improved
+• No Quit Prompt - quits immediately on Esc/Alt+F4 instead of prompting you
+• PS2 Controls - swaps Circle and X for confirm and cancel (it's a little more complex, but...)
+• Save Location Changer - set the save location to a folder of your choice, and change it again on the fly
+• Soft Reset - the Soft Reset function from the Trainer, but more responsive (and doesn't require the trainer ofc)
+• Text Change - permanent --life-name
+• Timer Display - the Timer part of the existing Overlay patch, improved
+• Turbo - a turbo/rapid fire implementation that doesn't require XInputPlus; supports profiles and full 30Hz
+• Turbo Display - the existing Turbo Display mod (pls delete the old one), improved
+• Unlock Radar patch from V's Fix - shows the full radar in most situations
+• Wet% - always leave footprints
+
+As it's a first release, of course bugs are likely, and some mods aren't 100% yet. Instructions are highly recommended. 
