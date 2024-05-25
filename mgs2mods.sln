@@ -7,18 +7,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mgs2mods", "mgs2mods.vcxpro
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		MGS2|x64 = MGS2|x64
 		MGS2|x86 = MGS2|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.Debug|x64.ActiveCfg = Debug|x64
-		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.Debug|x64.Build.0 = Debug|x64
 		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.Debug|x86.ActiveCfg = Debug|Win32
 		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.Debug|x86.Build.0 = Debug|Win32
-		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.MGS2|x64.ActiveCfg = MGS2|x64
-		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.MGS2|x64.Build.0 = MGS2|x64
 		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.MGS2|x86.ActiveCfg = MGS2|Win32
 		{6537893D-51F7-4BF5-BE7D-F2DB90C923E9}.MGS2|x86.Build.0 = MGS2|Win32
 	EndGlobalSection
