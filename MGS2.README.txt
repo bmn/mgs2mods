@@ -1,0 +1,131 @@
+================================================================================
+ASI plugin for Metal Gear Solid 2 Substance by bmn
+  https://mgs.w00ty.com/
+  https://www.youtube.com/@gogobmn
+--------------------------------------------------------------------------------
+Homepage: https://mgs.w00ty.com/mgs2/asi/
+--------------------------------------------------------------------------------
+support and testing by dlimes, hau5test, jmc, platonic, probably others i forget
+--------------------------------------------------------------------------------
+  In this file...
+   * Installation instructions
+   * Configuring mod .ini files
+   * About shortcuts
+================================================================================
+
+Installation instructions:
+
+First, ensure that Ultimate ASI Loader by ThirteenAG is installed in the bin folder.
+If using V's Fix, Ultimate ASI Loader is already installed and you don't need to do anything.
+Links:
+  * Ultimate ASI Loader <https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases>
+  * V's Fix <https://github.com/VFansss/mgs2-v-s-fix/releases>
+
+* Extract the zip to your MGS2 installation so that MGS2.asi is in the bin\scripts folder.
+* (Optional) Copy MGS2.ini from the MGS2.ConfigFiles folder to the scripts folder.
+* For any mod you want to use, either:
+  - Copy MGS2.NameOfMod.ini to the scripts folder , or...
+    copy the contents of that .ini to MGS2.ini if you want all your settings in a single file.
+  - Also edit that .ini in a text editor if you want to configure the mod
+* Launch MGS2.
+
+================================================================================
+
+Configuring mod .ini files:
+
+To disable a mod (without having to delete/rename files),
+  set Enabled=No in that mod's config
+
+Some mods can be toggled on the fly. To do this, set Enabled=Yes,
+  then set Active=Yes (active on launch) or No (not active on launch)
+  and set up a toggle shortcut (see below) in the [ModuleName.Toggle] section
+
+Many settings are placeholders that have been commented out with a hash # symbol at the start of the line.
+  Whatever value (the part after the = sign) is shown, that's usually the default value
+To change the value, first uncomment the setting by deleting the # symbol.
+
+Valid values you can use for boolean (true/false) options (case insensitive):
+  True, T, Yes, Y, On, 1
+  False, F, No, N, Off, 0
+
+TextColor/TextOutlines are in the hex format RRGGBB
+For TextPosX, the far left is 0, far right is 640
+For TextPosY, the top is 0, bottom is 480
+For TextAlign, 0 is left align, 1 is right align, 2 is centred
+
+In TextFormat and TextContent, you may see codes such as {}, {Score} or {Angle:+011.4f}
+These are used to insert a provided value, formatted in a particular way.
+  If more than one value is available, all the values will be listed in a comment near the setting itself.
+These formats follow the fmt syntax <https://fmt.dev/latest/syntax.html>, which is similar to the C printf syntax <https://cplusplus.com/reference/cstdio/printf/>
+
+================================================================================
+
+About Shortcuts:
+
+Many of the modules here have shortcuts which allow you to trigger things inside the module.
+You'll see categories such as [NameOfModule.Toggle], where "Toggle" is usually a description of what the shortcut does.
+
+Shortcuts have four available options (you can have any or all of them):
+  Keyboard is a keyboard input (e.g. CtrlShift+D)
+  Gamepad is a gamepad input (e.g. L1+Circle)
+  ContextMenu is the name of an item that will appear in the game's context menu
+  ContextMenuPosition is an optional number to set where the item appears in the context menu
+
+You can also have multiple Keyboard/Gamepad lines if you want multiple shortcuts.
+
+---
+
+Keyboard is a string representing a keyboard shortcut
+It's made up of:
+  0 or more modifier (Ctrl/Alt/Shift) keys, represented by e.g. CS, CtrlShift, ControlShift, etc.
+  a separator (either symbol + or #)
+  a single key to trigger the shortcut
+
+If + is used as the separator, you can enter A-Z, 0-9, N0-N9 (numpad keys), or F1-F24 as your key
+If # is used instead, the key is a 2-digit hexadecimal key code
+  (see https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes for a list)
+
+Examples:
+  A (or +A)      = the A key on its own
+  #41            = also the A key on its own
+  S+F1           = Shift+F1
+  Shift+F1       = insert thinking emoji here
+  CA#2E          = Ctrl+Alt+Del (not recommended!)
+  CtrlAlt#2E     = same
+
+The modifier keys MUST be a single word such as CtrlAlt, no symbols like Ctrl+Alt!
+Capitalisation (or lack of it) doesn't matter though
+
+---
+
+Gamepad is a string representing a gamepad shortcut
+It's made up of:
+  a series of button names (see "Valid input names" below), each separated by the symbol +
+    - e.g. L3+Cross+Square or L3+X+Sq
+  (optional) the symbol | followed by a single button name
+    - e.g. |Start
+
+If only + signs are used, it doesn't matter which button is the last to be pressed -
+  once all the buttons are pressed at once the shortcut will activate
+If a | is also used, the shortcut will only activate when that specific button is pressed
+  while holding all the other buttons
+
+Example:
+  L1+R1+L2+R2+Start - activates as soon as all 5 buttons are held
+  L1+R1+L2+R2|Start - activates when Start is pressed (while all the shoulder buttons are held)
+
+Valid input names:
+  Directions:       Up/U, Right/R, Down/D, Left/L
+  Face buttons:     Triangle/Tri/T, Circle/O, Cross/X, Square/Sq, Select/Sel, Start, L3, R3
+  Shoulder buttons: L1, R1, L2, R2
+
+---
+
+ContextMenu is a name that will be turned into a clickable shortcut in the game's context menu.
+  Open the context menu by right-clicking on the game, or pressing the Menu keyboard key
+    (between AltGr and RightCtrl).
+
+ContextMenuPosition is an optional number to set where the item appears in the context menu
+  The default is 0
+  Negative numbers (e.g. -1) appear higher - the more negative, the higher
+  Positive numbers (e.g. 1) appear lower - the more positive, the lower

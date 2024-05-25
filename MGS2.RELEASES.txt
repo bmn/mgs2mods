@@ -1,0 +1,324 @@
+================================================================================
+MGS2 ASI plugin by bmn
+  https://mgs.w00ty.com/
+  https://www.youtube.com/@gogobmn
+================================================================================
+
+
+Release history
+========
+
+b3 (development versions):
+[General]        Add exception catching to game function hooks to avoid potential ASI-induced crashes.
+[CutsceneSkip]   Compensation time is now also added to the area time (only cosmetic in practice), not just the game time.
+[ItemRando]      New module adding a set of challenge modes to randomise item types.
+
+--------------------------------------------------------------------------------
+
+b2: 14 Jan 2024
+[CutsceneSkip]   Fix bug where certain keyboard buttons mapped to Triangle/Y could add 2 or 3x the required compensation time when manually skipping unskippable cutscenes.
+[Stats]          Fix codename not displayed on ingame profile.
+
+--------------------------------------------------------------------------------
+
+b1: 9 Jan 2024
+
+* New features
+[General]        New category `[MGS2.Version]` (disabled) to show ASI version info on the title screen.
+[CutsceneSkip]	 New module to skip codecs and cutscenes automatically, with a limited mode that adds compensation for any timesave, and a customisable mode.
+[NewGameInfo]    New option `ShowVersion=Notice` to show ASI version info on the New Game screen, based on notice/warning status.
+[PS2Controls]    Circle/X now swapped correctly in Missions and Snake Tales menus, with option `Missions=Yes`.
+                 Player profile menus now have control mappings closer to PS2, with option `NameEntry=Yes`.
+
+* Other changes
+[General]        Minor documentation changes.
+[FirstPerson]    Move config file out of main package and into extras package.
+[Info]           Move config file out of main package and into extras package.
+[Performance]    Move config file out of main package and into extras package.
+[PS2Controls]    Option `GamecubeMenu` removed from config file.
+[Timer]          Fix bug where Format 1 for Expected Time shows `m.s` isntead of `m:s` when expected time is less than 1 hour.
+[VRInfo]         Move config file out of main package and into extras package.
+[Wet]            Move config file out of main package and into extras package.
+
+--------------------------------------------------------------------------------
+
+a11: 8 Dec 2023
+
+* Breaking changes
+[SaveMenu]       The game data features `CustomAlert`, `CustomData` and `RestoreOnContinue` (previously default `Yes`) are now default `No`.
+
+* New features
+[Caution]        New category `[Caution.AlertLevel.Next]` to toggle through the four alert modes.
+[GameOver]       New module to trigger a game over if you receive a Caution, and display a timer during Evasion.
+[NewGameInfo]    New option `AskGOID` (default `No`). If set to `Yes`, shows the Game Over If Discovered prompt on all difficulties.
+[TextChange]     New option `Prez` as a changeable lifebar name.
+[Timer]          New general timer option `ShowMinutes` (default `Yes`). If set to `No`, will hide the minutes part if the time is less than a minute.
+                 New general timer option `ShowHours` (default `No`). If set to `Yes`, will show the hours part even if the time is less than an hour.
+
+* Other changes
+[Actions]        Allow Windows symlinks (`mklink [LinkPath] [TargetPath]`) to be used as file paths.
+                 Fix bug where relative paths would be taken 2 levels up from the game's base directory instead of the base directory itself.
+[Stats]          For performance, avoid requesting the codename if the current display doesn't need it.
+
+--------------------------------------------------------------------------------
+
+a10d: 8 Oct 2023
+
+* New features
+[General]        New category in MGS2.ini, `[MGS2.StatusMessage]`, allows restyling of the standard status messages that appear when activating shortcuts.
+                 The context menu (right-click) credits header now opens the scripts folder when clicked.
+[Actions]        `Path` options now also support relative paths, beginning at the game's base directory (the directory containing "bin", "cdrom.img", etc).
+[Ames]           New category `[Ames.Practice.Restart]` to reroll Ames and restart the area.
+[SaveMenu]       New option `RestoreOnContinue`, restores the initial state of a loaded area if you continue without leaving the area.
+                 Data mods can now manipulate the original value using an AND/OR/NOT operator.
+[SaveLocation]   `Path` options now also support relative paths, beginning at the game's base directory.
+                 Hot-swapping between save locations inside the save menu will now refresh the save list without having to exit the menu.
+
+* Other changes
+[General]        Fix plugin not respecting `[MGS2]`'s `Enabled=No`.
+                 Various documentation changes.
+[Options]        Fix `Caption` ignoring friendly values if `QuickChange` is not set to a friendly value.
+[SaveMenu]       Fix data mods for section 1 being applied to section 0 instead.
+                 Fix Alert/Caution application failing if the `[Caution]` module is also enabled.
+                 Fix `Title` mods displaying an empty string if the new title is the same as the original.
+[Stats]          Fix paused game stats updating unnecessarily on every frame in Plant.
+                 Fix big boss comparison appearing incorrectly when disabled on one stats display if it's enabled on the other stats display.
+                 Damage taken and ammo used added to default in-game stats display.
+
+--------------------------------------------------------------------------------
+
+a10: 13 Aug 2023
+
+**Breaking changes**
+[General]        Text now defaults to showing a black outline. Set `TextOutline=No` to disable it.
+
+**New features**
+[General]        New text config option `TextOutline`, sets the colour of an outline around the text (default black).
+[Caution]        New category `[Caution.Random]`, enables a special mode that randomises the alert state for each area.
+[SaveMenu]       New option `IncreaseMaxSaves`, increases the available saves from 50 to 100 (main game) and from 5 to 100 (Snake Tales).
+                 New option `CustomTitle`, allows a custom.ini in the saves directory (or the folder for an individual save) to define custom savegame titles.
+                 New option `CustomAlert`, allows custom.ini to override the alert state and caution timer for individual saves.
+                 New option `CustomData`, allows custom.ini to override arbitrary data from the save file itself.
+[Stats]          New module that displays game stats onscreen, either on pause, or in live play.
+
+**Other changes**
+[Caution]        The `AlertLevel` option now supports friendly names for Infiltration, Caution, Alert and Evasion.
+                 Fix New Game warning showing the original alert level if changed by a shortcut.
+                 Fix the locked Caution timer being applied when it should be reverted (and vice versa) when alert level changed by a shortcut.
+[Timer]          Fix `[Timer.Combined]` not working if both ending timers are disabled.
+
+--------------------------------------------------------------------------------
+
+a8: 3 Jul 23
+
+**Breaking changes**
+[Timer]          The `OtherDeltas` option within `[Timer.ExpectedTime] has been removed.
+                 The New Game notices for `[Timer.ExpectedTime]` and `[Timer.EndingStartTime]` are now disabled by default. See `NewGameNotice` below.
+[TurboDisplay]   The `SolidusON` and `SolidusOFF` embedded sounds have been removed.
+
+**New features**
+[General]        `TextContent`/`TextFormat` settings now support line breaks using a heredoc (google it) format. Start the value with `<<<any_string` (use a name of your choice) followed by a line break, then your value (including line breaks), then another line break followed by `any_string` on its own line.
+                 `Keyboard` settings now support lowercase "n" and "f" for numpad/function keys.
+[Caution]        New shortcuts to change the AlertLevel on the fly.
+[EquipShortcuts] New (experimental) module allowing you to use shortcuts to equip weapons and items similarly to MGS1 on PC.
+[Info]           New (experimental) module offering a few onscreen info displays:
+                 `[Info.Position]` shows the player's XYZ position in the world map, plus the angle the player is facing.
+                 `[Info.CameraID]` shows the name of any special photo subject without having to take the photo.
+                   Bugs: It repeatedly plays a sound effect when pointing at a subject, and will crash the game if you go to the computer without an actual photo on any slots that were active at the time.
+[PS2Controls]    New (untested) option `GameCubeMenu` - changes the menu remappings to match those of The Twin Snakes, when used in conjunction with a TTS mapping (e.g. https://mgs.w00ty.com/mgs2/ttspad/).
+[Options]        `Caption` now supports friendly language names.
+                 `QuickChange` (new option) supports values `Previous` and `Unequip` (alternative to `QuickChangePrevious`).
+[TextChange]     New options to modify many more life gauge names, including all the bosses.
+                 New shortcut to toggle the module on and off.
+[Timer]          New general timer `[Timer.AreaDelta]` - shows the difference between game time and real time in the current area.
+                 New general timer `[Timer.Combined]` - a single timer display that can contain multiple general timers at once.
+                 New global/profile option `TimeFormat` - changes the timer style (e.g. to use colons instead of apostrophes).
+                 New option `NewGameNotice` in `[Timer.ExpectedTime]` and `[Timer.EndingStartTime]` - if set to Yes, the notice for these profiles on the New Game screen will be shown.
+[VRInfo]         New (experimental) module to show your current top score in a mission, and indicate a new best score.
+[VRRando]        New (experimental) module that gives you a random (mapped 1:1) mission when entering from the mission menu.
+
+**Other changes**
+[General]        Fixed bug where modules read INI files a second time unnecessarily.
+                 Fixed bug where single-button keyboard shortcuts A, C and S would require Alt+A, Ctrl+C and Shift+S to activate.
+                 In some `TextFormat` and `TextContent` options, the default code to insert a string has changed from `%s` to `{}`.
+[Caution]        Fixed bug where some Caution% behaviours would still be active even if `Active` was set to Off.
+                 Fixed bug where Caution would not be applied in some areas that explicitly reset the alert state.
+[TextChange]     `LifeName` now supports longer names, up to 20 characters (previously 13).
+[Timer]          Fixed bug where timers stop working properly at about 20 hours displayed time.
+[TurboDisplay]   Fixed bug where the `SystemSound` setting did not work.
+[Wet]            Fixed bug where module would not respect the `Active` setting, and would always be active on launch.
+
+--------------------------------------------------------------------------------
+
+a6: 25/11/22
+
+Read the a5 patch notes below if updating from a4 or earlier
+
+**Breaking changes**
+[Actions]      Gamepad shortcuts must now use + as the main separator only, | does not work (see new feature below)
+[SaveMenu]     New mod with a feature previously provided by [SaveLocation].
+               `FirstPage` (L2) and `LastPage` (R2) shortcuts. They scroll directly to the first/last save game in the list.
+[SaveLocation] `FirstPage` and `LastPage` shortcuts removed.
+
+**New features**
+[Actions]      Gamepad shortcuts can have an "activation button" (the button that needs to be pressed last), by using | as the separator before the last button name instead of +.
+[Ames]         New mod adding features related to the search for Ames.
+               `HostageHour` setting locks the hostage combination of your choice.
+               [Ames.Practice] - a cleaner version of the MGS2 Trainer's Boss Practice Mode for Ames. Randomises his position and restarts whenever you find him.
+[SaveLocation] If `BasePath` is used on its own (with no accompanying `Path`s), it will scan the `BasePath` and automatically use every folder in it as a save location.
+               `PreviousLocationGlobal` and `NextLocationGlobal` shortcuts. They change to the previous/next save location preset without having to be in the save game menu.
+[Timer]        `EndingDelta` and `OtherDeltas` options within [Timer.ExpectedTime]. If set to yes, will show the Game Time/Real Time difference during the ending or other sequences.
+[Wet]          `Toggle` shortcut.
+
+**Other changes**
+[General]      Loading of config ini files made more consistent. Previously MGS2.ini would be loaded, followed by each module ini as the module was initialised - this could lead to some options not taking effect if they were in files that had not yet been loaded. Now all files are loaded in alphabetical order before any modules are initialised.
+               Toggle shortcuts (excluding those in [Turbo] and [Performance]) now trigger an onscreen message.
+[Actions]      Fixed bug where mouse pointer wasn't visible when using the context menu.
+[NewGameInfo]  Fixed bug with [SaveChoices] and [ClearChoices] where the message could get locked on later visits to New Game.
+[Performance]  Removed example config file.
+[PS2Controls]  Fixed bug where Equip menu consumables (e.g. Ration) still used the Xbox-style button scheme.
+
+--------------------------------------------------------------------------------
+
+a5: 30/7/22
+
+ASI Plugin a5
+
+**The warning bit**
+This is a big update. I've previously avoided making breaking changes (i.e. changes that would deliberately stop your existing config from working properly), but this time we're rethinking how the config is organised, and packing all those breaks into one release.
+
+Many of your existing INI files from a4 will break if you update to a5, so I recommend remaking all of your config (after backing up your old scripts folder), using the new example config files as a guide.
+
+
+**The blurb bit**
+While there are a load of new features, the bulk of the new functionality comes from a module most of you ~~nerds~~ don't use - the Actions module. On the face of it, all Actions does is let you open programs like the MGS2 Trainer via keyboard shortcuts, but it also provided those shortcuts for a number of other modules in the background.
+
+In this update however, Actions has been overhauled to be a complete solution for keyboard shortcuts, gamepad shortcuts, and a context menu accessed by right-clicking the game window. Every module that has shortcuts is now integrated into this, and it means there are more available shortcuts for each module, and they're easier and more consistent to set up in your INIs. Config in general has been reorganised to be less confusing to work with, too.
+
+A number of modules, particularly those that apply effects like Caution% and UnlockRadar, can now be turned on and off on the fly. You can do this by setting `Enabled=Yes`, `Active=Yes/No` depending on whether you want it active initially, and setting a shortcut in its `ModuleName.Toggle` category.
+
+There are also new features for (among others) `NewGameInfo` (hostage info; bad choice warnings; saved choices), `SaveLocation` (skip to first/last save; configurable hot-swappable save locations), `Timer` (real/area time; hot-swappable timers) and `TurboDisplay` (activation sounds included).
+
+
+**Breaking changes**
+[General]      `ModifierKeys` and `KeyCode` replaced throughout with `Keyboard`.
+               `InputMask` replaced throughout with `Gamepad`.
+[SaveLocation] `ChangeDirectory`, `BaseDirectory` and `SavePath` replaced with `BasePath` and `Path`.
+[Timer]        Timer profiles no longer inherit options from each other.
+               Game Time timer settings moved from `Timer` category to `Timer.GameTime` category.
+[Turbo]        Turbo profiles no longer inherit options from each other.
+               `Toggle` moved to `Turbo.Toggle` category.
+[TurboDisplay] TurboDisplay profiles no longer inherit options from each other.
+
+
+**New features**
+[General]      `Keyboard` shortcut option. It takes friendly inputs such as CtrlShift+O.
+               `Gamepad` shortcut option. It can take friendly inputs such as `L1+Circle` (or your old `InputMask`s if you like).
+               `Keyboard` and `Gamepad` options can be repeated multiple times, to register multiple shortcuts for the same action.
+               `ContextMenu` and `ContextMenuPosition` shortcut options. Adds a shortcut to the right-click context menu.
+[Actions]      Application entries can launch .dll files as long as they have a standard DllMain function.
+               `Priority` application option. Same as the `Affinity` module.
+[Caution]      Can be toggled on the fly via the `Caution.Toggle` shortcut.
+[DelayedLoad]  Can be toggled on the fly via the `DelayedLoad.Toggle` shortcut.
+[DrebinMode]   Can be toggled on the fly via the `DrebinMode.Toggle` shortcut.
+[FirstPerson]  Can be toggled on the fly via the `FirstPerson.Toggle` shortcut.
+[NewGameInfo]  `SaveChoices` (R2) shortcut. When run on the last screen, it saves your choices and goes straight to the last screen when you start a new game later.
+               `ClearChoices` (L2) shortcut. It clears any saved choices so they're not applied in the future.
+               `ShowHostages` option. It displays the current hostage variant, and the time until it changes to the next variant.
+               `WarnNewGame` option. If not on New Game+/++, the "New Game" text will flash red as a warning.
+               `WarnUnequip` option. If not on Previous quick change, the "Unequip" text will flash red as a warning.
+[PS2Controls]  Can be toggled on the fly via the `PS2Controls.Toggle` shortcut.
+[SaveLocation] `BasePath` and `Path` (repeatable) options. They can be used to create a list of save locations (e.g. for different difficulties).
+               `PreviousLocation` (L1) and `NextLocation` (R1) shortcuts. They change the active save location to the previous/next one in the list created via `Path`.
+               `FirstPage` (L2) and `LastPage` (R2) shortcuts. They scroll directly to the first/last save game in the list.
+               `OpenExplorer` shortcut. It opens the current save location for browsing.
+[Timer]        `Timer.RealTime`, `Timer.AreaGameTime` (resets on new area) and `Timer.AreaRealTime` timer profiles.
+               All timer profiles can be toggled on the fly via shortcut.
+               `SingleTimer` option for gameplay timer profiles. It allows you to swap between different timers (e.g. from GameTime to AreaRealTime for IL runs).
+[Turbo]        `Turbo.NextProfile` shortcut. It swaps to the next turbo profile (same behaviour as `Turbo.Toggle` if there is only one profile).
+               A turbo profile can be selected directly via its category's shortcut (same behaviour as `Turbo.Toggle` if there is only one profile).
+[TurboDisplay] `PlaySound` can be set to a selection of preset sound effects provided as part of the plugin.
+
+
+**Other changes/bugfixes**
+[General]      Fix: Gamepad shortcuts involving the L3 button did not work.
+               Fix: Keyboard shortcuts involving the Alt key did not work.
+[Actions]      Fix: Launched applications took on the same priority (if lower than Normal) and affinity as the game.
+[NewGameInfo]  Module warnings now flash red, instead of displaying as solid red.
+               Difficulty names changed to uppercase to match other values.
+[TextChange]   `LifeName` now accepts strings longer than 13 characters, but they will be truncated to 13 characters before being used.
+[Timer]        Fix: `EndingStartTime` and `ExpectedTime`'s default `TextFormat` was not applied correctly.
+               `ExpectedTime` now starts counting on frame 1 instead of 12. This will increase the apparent delta time, but should result in less variation between different systems.
+               `EndingStartTime`'s default `TextFormat` changed from "%s Ending Start" to "%s at Credits".
+               `ExpectedTime`'s default `TextFormat` changed from "%s Expected" to "%s Predicted".
+               `NewGameInfo` warning text changed from "Ending Start Time" to "Time at Credits"; "Expected Clear Time" to "Predicted Clear Time"; "Ending Start/Expected Clear" to "Credits & Predicted Time".
+
+--------------------------------------------------------------------------------
+
+a4: 9 Feb 2022
+
+asi a4 new stuff:
+[Actions]      Set keyboard shortcuts to open an application of your choice. It tells MGS2 Trainer to disable its Soft Reset if it will clash with the ASI version. There may be other types of action in the future.
+[Affinity]     Set the processor affinity and priority on launch
+[DelayedLoad]  Add a set delay at the start of each new screen, e.g. to give more time to think between screens when practicing
+
+updated stuff:
+[Timer]        Ending start time (optional) added - displays the Game Time at the beginning of the ending. Expected time moved to top left by default.
+[SaveLocation] The keyboard shortcut to open the save location selection dialog can now be changed in config
+[Wet]          A new and exciting mode... Cold% :O
+
+--------------------------------------------------------------------------------
+
+a3: 13 Jan 2022
+
+A small update that (along with fixing a couple of small bugs), adds a much-requested TurboDisplay feature...
+
+...set the new `PlaySound` option in any TurboDisplay profile to the full path to a WAV file, and it'll play on activation.
+This feature works on disabling turbo in the `[TurboDisplay]` profile, and with your XInputPlus turbo in the `[TurboDisplay.Profile.1]` profile.
+
+--------------------------------------------------------------------------------
+
+a2: 2 Jan 2022
+
+ASI update :freerealestate:
+
+New stuff:
+* Performance - new mod to show the game FPS onscreen
+
+Updated stuff:
+* New Game Info
+  - new options to disable showing NG and NGOID
+  - bugfix for NG+/NG++ showing incorrect number of +s
+  - "quick equip"" renamed to "quick change"
+* Timer
+  - new options to show an (estimated) expected time during Plant credits (thx to dlimes and hau5test for help)
+  - new option `TextFormat` to add custom text to timers
+
+
+--------------------------------------------------------------------------------
+
+a1: 12 Dec 2021
+
+New PC thing :NickRPMeme: If you've seen people with weird colour turbo displays and wondered what they're using, here's your answer
+
+This is an ASI plugin (just a renamed DLL really) that you put in your bin\scripts folder. It has a load of mods you can enable and configure individually (through INI files), including all of my previous hard-patch mods.
+
+The full list:
+• Caution% - apply permanent Caution, or apply Evasion at the start of every area
+• Default Options - change the settings in the Options menu when launching the game
+• DirectInput controller background support - makes DInput controllers work when clicked away from the game
+• Drebin Mode patch from V's Fix - 9999 ammo for every weapon
+• First Person% - first person mode in every mode
+• New Game Info - the New Game part of the existing Overlay patch, improved
+• No Quit Prompt - quits immediately on Esc/Alt+F4 instead of prompting you
+• PS2 Controls - swaps Circle and X for confirm and cancel (it's a little more complex, but...)
+• Save Location Changer - set the save location to a folder of your choice, and change it again on the fly
+• Soft Reset - the Soft Reset function from the Trainer, but more responsive (and doesn't require the trainer ofc)
+• Text Change - permanent --life-name
+• Timer Display - the Timer part of the existing Overlay patch, improved
+• Turbo - a turbo/rapid fire implementation that doesn't require XInputPlus; supports profiles and full 30Hz
+• Turbo Display - the existing Turbo Display mod (pls delete the old one), improved
+• Unlock Radar patch from V's Fix - shows the full radar in most situations
+• Wet% - always leave footprints
+
+As it's a first release, of course bugs are likely, and some mods aren't 100% yet. Instructions are highly recommended. 
