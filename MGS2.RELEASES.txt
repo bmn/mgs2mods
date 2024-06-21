@@ -11,6 +11,8 @@ Release history
 b3 (development versions):
 [General]        Add exception catching to game function hooks to avoid potential ASI-induced crashes.
 [CutsceneSkip]   Compensation time is now also added to the area time (only cosmetic in practice), not just the game time.
+                 Set default value of custom setting `AllowSkipChokeDialogue` from `Yes` to `No`.
+                 Fix bug where custom setting `AllowSkipChokeDialogue` had a typo in its example ini file.
 [ItemRando]      New module adding a set of challenge modes to randomise item types.
 
 --------------------------------------------------------------------------------
