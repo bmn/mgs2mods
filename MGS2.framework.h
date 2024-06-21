@@ -125,6 +125,14 @@ namespace MGS2 {
 		MGS2::Stage Stage();
 	}
 
+	namespace Vox {
+		int PlayBlock(size_t block);
+		int PlayOffset(size_t offset);
+		int Play(size_t index);
+	}
+
+
+
 	unsigned int RNG(unsigned int mod);
 
 	extern CSimpleIniA Ini;
@@ -479,6 +487,10 @@ namespace MGS2 {
 	}
 	
 	namespace ItemRando3 {
+		void Run(CSimpleIniA& ini);
+	}
+
+	namespace Style {
 		void Run(CSimpleIniA& ini);
 	}
 

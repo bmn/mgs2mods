@@ -14,6 +14,7 @@ b3 (development versions):
                  Set default value of custom setting `AllowSkipChokeDialogue` from `Yes` to `No`.
                  Fix bug where custom setting `AllowSkipChokeDialogue` had a typo in its example ini file.
 [ItemRando]      New module adding a set of challenge modes to randomise item types.
+[Style]          New module to make stylistic modifications to the game, e.g. to bring back lost PS2 features such as the Japanese ringtone
 
 --------------------------------------------------------------------------------
 

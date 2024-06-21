@@ -343,6 +343,7 @@
     <ClCompile Include="MGS2.Wet.cpp" />
     <ClCompile Include="MGS2.TwinSnakesInput.cpp" />
     <ClCompile Include="MGS2.VRInfo.cpp" />
+    <ClCompile Include="MGS2.Style.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="MGS2.ConfigFiles\MGS2.Caution.ini">
@@ -592,6 +593,13 @@
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnMetal|Win32'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="MGS2.ConfigFiles\MGS2.Style.ini">
+      <DeploymentContent>true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnMetal|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MGS2|Win32'">false</ExcludedFromBuild>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
