@@ -21,8 +21,7 @@ T ParseValueMap(CSimpleIniA& ini, const char* category, const char* key, std::ma
 
 
 template<typename T>
-T ParseInteger(CSimpleIniA& ini, const char* category, const char* key, T defaultValue, T minValue, T maxValue, bool useDefaultValue = false) {
-	long long input = ini.GetLongValue(category, key, (long)defaultValue);
+T ParseInteger(T input, T defaultValue, T minValue, T maxValue, bool useDefaultValue = false) {
 	if (input < minValue) {
 		input = useDefaultValue ? defaultValue : minValue;
 	}
@@ -30,4 +29,10 @@ T ParseInteger(CSimpleIniA& ini, const char* category, const char* key, T defaul
 		input = useDefaultValue ? defaultValue : maxValue;
 	}
 	return (T)input;
+}
+
+template<typename T>
+T ParseInteger(CSimpleIniA& ini, const char* category, const char* key, T defaultValue, T minValue, T maxValue, bool useDefaultValue = false) {
+	long long input = ini.GetLongValue(category, key, (long)defaultValue);
+	return ParseInteger<T>((T)input, defaultValue, minValue, maxValue, useDefaultValue);
 }
