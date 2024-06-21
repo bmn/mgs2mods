@@ -1360,11 +1360,8 @@ namespace MGS2::ItemRando {
 
 
 	void Run(CSimpleIniA& ini) {
-		return;
-
 		if (ini.IsEmpty() || (!ini.GetBoolValue(Category, "Enabled", false))) return;
-		if (ConfigParser::ParseInteger<int>(ini, Category, "Version", 2, 0, INT_MAX, true) == 2) Enabled = true;
-		else return;
+		if (ConfigParser::ParseInteger<int>(ini, Category, "Version", 2, 0, INT_MAX, true) != 2) return;
 
 		RNG = std::mt19937{ RD() };
 
