@@ -10,7 +10,7 @@ namespace ASI {
 		return GetRawVersion(major, charMinor, version, charBuild);
 	}
 
-	char Version[] = "b3p";
-	unsigned int RawVersion = GetRawVersionFromChars(0, 'b', 3, 'p');
+	char Version[] = "b3q";
+	unsigned int RawVersion = GetRawVersionFromChars(0, 'b', 3, 'q');
 
 }
