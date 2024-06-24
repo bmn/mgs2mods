@@ -85,7 +85,7 @@ namespace ConfigParser {
 				}
 				else if (c == 'F') {
 					// F1-F24
-					int num = atoi(key);
+					int num = atoi(key + 1);
 					if ((num >= 1) && (num <= 24)) {
 						output.Key = (0x6F + num);
 					}
