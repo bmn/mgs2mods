@@ -367,7 +367,7 @@ namespace MGS2::ItemRando3 {
 
 			bool successfullyMoved = false;
 			size_t failures = 0;
-			short minProgressAvailable;
+			short minProgressAvailable = 0;
 
 			for (auto shuffledLG : shuffledLocationGroups) {
 				if (shuffledLG->RandomPickup) continue; // this location already has a random item
